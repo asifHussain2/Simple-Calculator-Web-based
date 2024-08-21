@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Simple Calculator</h1>
+    <div id="calculator">
+      <input type="text" id="display" readonly>
+      <div class="button-container">
+        <button class="button" onclick="clearDisplay()" style="background-color: red;">C</button>
+        <button class="button" onclick="display('1')">1</button>
+        <button class="button" onclick="display('2')">2</button>
+        <button class="button" onclick="display('+')">+</button>
+        <button class="button" onclick="display('3')">3</button>
+        <button class="button" onclick="display('4')">4</button>
+        <button class="button" onclick="display('-')">-</button>
+        <button class="button" onclick="display('5')">5</button>
+        <button class="button" onclick="display('6')">6</button>
+        <button class="button" onclick="display('*')">*</button>
+        <button class="button" onclick="display('7')">7</button>
+        <button class="button" onclick="display('8')">8</button>
+        <button class="button" onclick="display('/')">/</button>
+        <button class="button" onclick="solve()" style="background-color: orange;">=</button>
+        <button class="button" onclick="display('9')">9</button>
+        <button class="button" onclick="display('0')">0</button>
+        <button class="button" onclick="display('.')">.</button>
+      </div>
+       
+        </div>
+  </div>
+ 
+  <script>
+    let currentDisplay = '';
+    function display(symbol){
+      if((symbol==='.' && (currentDisplay.endsWith('.') || currentDisplay.endsWith('+') || currentDisplay.endsWith('-') || currentDisplay.endsWith('/') || currentDisplay.endsWith('*'))) || (symbol==='+' && (currentDisplay.endsWith('+') || currentDisplay.endsWith('.')  || currentDisplay.endsWith('-') || currentDisplay.endsWith('/') || currentDisplay.endsWith('*'))) || (symbol==='-' && (currentDisplay.endsWith('-') || currentDisplay.endsWith('.') || currentDisplay.endsWith('+') || currentDisplay.endsWith('/') || currentDisplay.endsWith('*'))) || (symbol==='*' && (currentDisplay.endsWith('*') || currentDisplay.endsWith('.') || currentDisplay.endsWith('+') || currentDisplay.endsWith('-') || currentDisplay.endsWith('/'))) || (symbol==='/' && (currentDisplay.endsWith('/') || currentDisplay.endsWith('.') || currentDisplay.endsWith('+') || currentDisplay.endsWith('-') || currentDisplay.endsWith('*')))){
+
+      }
+      else{
+        currentDisplay+=symbol;
+        document.querySelector('#display').value=currentDisplay;
+      }
+      
+    }
+
+    function solve(){
+      document.querySelector('#display').value=eval(currentDisplay);
+    }
+
+    function clearDisplay(){
+      currentDisplay = '';
+      document.querySelector('#display').value='';
+    }
+  </script>
+</body>
+</html>
